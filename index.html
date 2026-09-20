@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bella Vita — A modern Italian restaurant portfolio demo.">
+  <meta name="theme-color" content="#17130f">
+  <title>Bella Vita — Italian Restaurant</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f5f0e8;
+      color: #211b16;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1150px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(23, 19, 15, .94);
+      backdrop-filter: blur(10px);
+      color: #fff;
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #c99454;
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #ddd;
+      transition: .3s;
+    }
+
+    .nav-links a:hover {
+      color: #c99454;
+    }
+
+    .menu {
+      display: none;
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 76px;
+      display: flex;
+      align-items: center;
+      color: white;
+      background:
+        linear-gradient(rgba(25, 18, 12, .70), rgba(25, 18, 12, .78)),
+        radial-gradient(circle at 70% 35%, #8c5c38, #251a13 58%, #111);
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      color: #d4a263;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(60px, 9vw, 105px);
+      line-height: .9;
+      font-weight: normal;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 span {
+      color: #d4a263;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #ddd;
+      font-size: 19px;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 25px;
+      background: #c58e50;
+      color: #17120e;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      border-radius: 2px;
+      transition: .3s;
+      margin-right: 10px;
+    }
+
+    .btn:hover {
+      background: #e0b276;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 1px solid #aaa;
+    }
+
+    .btn-outline:hover {
+      background: transparent;
+      color: #d4a263;
+      border-color: #d4a263;
+    }
+
+    /* INTRO */
+
+    .intro {
+      padding: 110px 0;
+      text-align: center;
+    }
+
+    .intro-content {
+      max-width: 780px;
+      margin: auto;
+    }
+
+    .intro h2,
+    .section-title h2 {
+      font-size: clamp(40px, 6vw, 62px);
+      line-height: 1;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+
+    .intro p,
+    .section-title p {
+      color: #766d64;
+      font-size: 17px;
+    }
+
+    /* MENU */
+
+    .menu-section {
+      background: #211a14;
+      color: white;
+      padding: 110px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 55px;
+    }
+
+    .menu-section .section-title p {
+      color: #aaa;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .menu-card {
+      border: 1px solid #41362c;
+      padding: 30px;
+      background: #18130f;
+    }
+
+    .menu-card h3 {
+      color: #d4a263;
+      font-size: 27px;
+      font-weight: normal;
+      font-style: italic;
+      margin-bottom: 25px;
+    }
+
+    .dish {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid #332a23;
+      padding: 16px 0;
+    }
+
+    .dish:last-child {
+      border-bottom: 0;
+    }
+
+    .dish h4 {
+      font-size: 17px;
+      font-weight: normal;
+    }
+
+    .dish p {
+      color: #888;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .dish strong {
+      color: #d4a263;
+      white-space: nowrap;
+    }
+
+    /* STORY */
+
+    .story {
+      padding: 110px 0;
+      background: #f5f0e8;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 75px;
+      align-items: center;
+    }
+
+    .story-image {
+      min-height: 510px;
+      background:
+        linear-gradient(145deg, #765237, #291b12);
+      display: flex;
+      align-items: end;
+      padding: 35px;
+      color: white;
+    }
+
+    .story-image strong {
+      font-size: 40px;
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    .story-text h2 {
+      font-size: 57px;
+      line-height: 1;
+      font-weight: normal;
+      margin-bottom: 25px;
+    }
+
+    .story-text p {
+      color: #71675d;
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    /* SPECIALS */
+
+    .specials {
+      background: #e7dfd2;
+      padding: 110px 0;
+    }
+
+    .special-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .special {
+      background: #f8f4ed;
+      padding: 35px;
+      border-top: 3px solid #c58e50;
+    }
+
+    .special-number {
+      color: #a26c35;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      margin-bottom: 25px;
+    }
+
+    .special h3 {
+      font-size: 26px;
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    .special p {
+      color: #766d64;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      padding: 110px 0;
+      background: #17120e;
+      color: white;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      min-height: 280px;
+      background: linear-gradient(145deg, #59402d, #21160f);
+      display: flex;
+      align-items: end;
+      padding: 20px;
+      transition: .3s;
+    }
+
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(6) {
+      background: linear-gradient(145deg, #71472e, #24170e);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+
+    .gallery-item span {
+      color: #ddd;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* TESTIMONIALS */
+
+    .reviews {
+      padding: 110px 0;
+      background: #f5f0e8;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review {
+      padding: 32px;
+      background: #fffaf3;
+      border: 1px solid #e2d8c9;
+    }
+
+    .stars {
+      color: #b77835;
+      margin-bottom: 20px;
+    }
+
+    .review p {
+      color: #665e56;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .review strong {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+
+    /* RESERVATION */
+
+    .reservation {
+      padding: 110px 0;
+      background: #c58e50;
+      color: #17120e;
+      text-align: center;
+    }
+
+    .reservation h2 {
+      font-size: clamp(42px, 6vw, 68px);
+      font-weight: normal;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .reservation p {
+      margin-bottom: 30px;
+    }
+
+    .dark-btn {
+      background: #17120e;
+      color: white;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      padding: 110px 0;
+      background: #211a14;
+      color: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+    }
+
+    .contact h2 {
+      font-size: 55px;
+      font-weight: normal;
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .contact-text {
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    .details {
+      display: grid;
+      gap: 14px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .details div {
+      padding: 15px;
+      background: #18130f;
+      border-left: 2px solid #c58e50;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #43372c;
+      background: #18130f;
+      color: white;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 145px;
+      resize: vertical;
+    }
+
+    button {
+      border: 0;
+      padding: 15px;
+      background: #c58e50;
+      color: #17120e;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 30px 0;
+      background: #100c09;
+      color: #777;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        padding: 25px;
+        background: #17120e;
+        flex-direction: column;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .story-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .special-grid,
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      section,
+      .menu-section,
+      .story,
+      .specials,
+      .gallery,
+      .reviews,
+      .reservation,
+      .contact {
+        padding: 75px 0;
+      }
+
+      .hero h1 {
+        font-size: 60px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story-image {
+        min-height: 350px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .btn {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+
+    <div class="container nav-inner">
+
+      <a href="#" class="logo">
+        Bella <span>Vita</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#specials">Specials</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="menu" onclick="toggleMenu()">☰</div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          Italian Restaurant
+        </div>
+
+        <h1>
+          Taste the<br>
+          <span>Italian way.</span>
+        </h1>
+
+        <p>
+          Handmade pasta, wood-fired pizza and unforgettable
+          flavors inspired by the heart of Italy.
+        </p>
+
+        <a href="#reservation" class="btn">
+          Reserve a Table
+        </a>
+
+        <a href="#menu" class="btn btn-outline">
+          View Our Menu
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <div class="container intro-content">
+
+      <div class="eyebrow">
+        Benvenuti
+      </div>
+
+      <h2>
+        Simple ingredients.<br>
+        Extraordinary moments.
+      </h2>
+
+      <p>
+        Bella Vita is a fictional Italian restaurant concept
+        created as a portfolio demonstration. Our design
+        celebrates warm hospitality, traditional recipes and
+        contemporary elegance.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MENU -->
+
+  <section class="menu-section" id="menu">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <div class="eyebrow">
+          Our Menu
+        </div>
+
+        <h2>
+          From our kitchen.
+        </h2>
+
+        <p>
+          A selection of fictional signature dishes designed
+          to showcase a premium restaurant experience.
+        </p>
+
+      </div>
+
+
+      <div class="menu-grid">
+
+        <div class="menu-card">
+
+          <h3>Antipasti</h3>
+
+          <div class="dish">
+            <div>
+              <h4>Burrata & Tomatoes</h4>
+              <p>Fresh burrata, tomatoes, basil and olive oil</p>
+            </div>
+            <strong>$14</strong>
+          </div>
+
+          <div class="dish">
+            <div>
+              <h4>Truffle Arancini</h4>
+              <p>Crispy risotto, mozzarella and truffle</p>
+            </div>
+            <strong>$16</strong>
+          </div>
+
+          <div class="dish">
+            <div>
+              <h4>Bruschetta Classica</h4>
+              <p>Tomato, basil, garlic and toasted bread</p>
+            </div>
+            <strong>$11</strong>
+          </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+          <h3>Pasta</h3>
+
+          <div class="dish">
+            <div>
+              <h4>Tagliatelle al Ragù</h4>
+              <p>Handmade pasta and slow-cooked beef ragù</p>
+            </div>
+            <strong>$24</strong>
+          </div>
+
+          <div class="dish">
+            <div>
+              <h4>Truffle Carbonara</h4>
+              <p>Egg, pecorino, guanciale and black truffle</p>
+            </div>
+            <strong>$27</strong>
+          </div>
+
+          <div class="dish">
+            <div>
+              <h4>Lobster Ravioli</h4>
+              <p>Fresh ravioli, lobster and saffron cream</p>
+            </div>
+            <strong>$31</strong>
+          </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+          <h3>Pizza</h3>
+
+          <div class="dish">
+            <div>
+              <h4>Margherita</h4>
+              <p>San Marzano tomato, mozzarella and basil</p>
+            </div>
+            <strong>$18</strong>
+          </div>
+
+          <div class="dish">
+            <div>
+              <h4>Prosciutto & Burrata</h4>
+              <p>Prosciutto, burrata, tomato and arugula</p>
+            </div>
+            <strong>$23</strong>
+          </div>
+
+          <div class="dish">
+            <div>
+              <h4>Funghi</h4>
+              <p>Wild mushrooms, mozzarella and herbs</p>
+            </div>
+            <strong>$21</strong>
+          </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+          <h3>Dolci</h3>
+
+          <div class="dish">
+            <div>
+              <h4>Tiramisu</h4>
+              <p>Espresso, mascarpone and cocoa</p>
+            </div>
+            <strong>$10</strong>
+          </div>
+
+          <div class="dish">
+            <div>
+              <h4>Panna Cotta</h4>
+              <p>Vanilla cream and seasonal berries</p>
+            </div>
+            <strong>$9</strong>
+          </div>
+
+          <div class="dish">
+            <div>
+              <h4>Chocolate Tart</h4>
+              <p>Dark chocolate, sea salt and cream</p>
+            </div>
+            <strong>$11</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STORY -->
+
+  <section class="story" id="story">
+
+    <div class="container story-grid">
+
+      <div class="story-image">
+
+        <strong>
+          La Dolce Vita
+        </strong>
+
+      </div>
+
+
+      <div class="story-text">
+
+        <div class="eyebrow">
+          Our Story
+        </div>
+
+        <h2>
+          Made with passion.
+        </h2>
+
+        <p>
+          Bella Vita is a fictional restaurant concept inspired
+          by the warmth of Italian family dining.
+        </p>
+
+        <p>
+          Every detail of this portfolio project is designed
+          to communicate quality, hospitality and a memorable
+          dining experience.
+        </p>
+
+        <p>
+          From the typography to the warm color palette, the
+          website combines classic Italian character with
+          modern digital design.
+        </p>
+
+        <a href="#contact" class="btn">
+          Discover Bella Vita
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SPECIALS -->
+
+  <section class="specials" id="specials">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <div class="eyebrow">
+          Chef's Selection
+        </div>
+
+        <h2>
+          Special moments.
+        </h2>
+
+        <p>
+          Featured fictional experiences for this restaurant concept.
+        </p>
+
+      </div>
+
+
+      <div class="special-grid">
+
+        <article class="special">
+
+          <div class="special-number">
+            01 / DINNER
+          </div>
+
+          <h3>
+            Chef's Table
+          </h3>
+
+          <p>
+            An intimate multi-course dining experience
+            designed around seasonal ingredients.
+          </p>
+
+        </article>
+
+
+        <article class="special">
+
+          <div class="special-number">
+            02 / WEEKEND
+          </div>
+
+          <h3>
+            Sunday Brunch
+          </h3>
+
+          <p>
+            Slow mornings, Italian pastries, coffee and
+            beautifully prepared brunch favorites.
+          </p>
+
+        </article>
+
+
+        <article class="special">
+
+          <div class="special-number">
+            03 / PRIVATE
+          </div>
+
+          <h3>
+            Private Dining
+          </h3>
+
+          <p>
+            A refined setting for celebrations, dinners
+            and unforgettable gatherings.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GALLERY -->
+
+  <section class="gallery" id="gallery">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <div class="eyebrow">
+          Gallery
+        </div>
+
+        <h2>
+          A taste of Bella Vita.
+        </h2>
+
+      </div>
+
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item">
+          <span>Fresh Pasta</span>
+        </div>
+
+        <div class="gallery-item">
+          <span>Wood-Fired Pizza</span>
+        </div>
+
+        <div class="gallery-item">
+          <span>Italian Dining</span>
+        </div>
+
+        <div class="gallery-item">
+          <span>Chef's Table</span>
+        </div>
+
+        <div class="gallery-item">
+          <span>Signature Dishes</span>
+        </div>
+
+        <div class="gallery-item">
+          <span>Fresh Ingredients</span>
+        </div>
+
+        <div class="gallery-item">
+          <span>Dolci</span>
+        </div>
+
+        <div class="gallery-item">
+          <span>La Dolce Vita</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REVIEWS -->
+
+  <section class="reviews">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <div class="eyebrow">
+          Guest Reviews
+        </div>
+
+        <h2>
+          Loved around the table.
+        </h2>
+
+      </div>
+
+
+      <div class="review-grid">
+
+        <article class="review">
+
+          <div class="stars">★★★★★</div>
+
+          <p>
+            "Beautiful atmosphere, incredible pasta and
+            wonderful attention to detail."
+          </p>
+
+          <strong>— Sofia M.</strong>
+
+        </article>
+
+
+        <article class="review">
+
+          <div class="stars">★★★★★</div>
+
+          <p>
+            "Bella Vita feels like stepping into a little
+            corner of Italy."
+          </p>
+
+          <strong>— Daniel R.</strong>
+
+        </article>
+
+
+        <article class="review">
+
+          <div class="stars">★★★★★</div>
+
+          <p>
+            "A perfect place for a relaxed dinner and
+            unforgettable food."
+          </p>
+
+          <strong>— Emma L.</strong>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  <
